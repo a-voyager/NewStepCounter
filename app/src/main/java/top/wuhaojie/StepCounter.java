@@ -47,9 +47,9 @@ public class StepCounter {
      * 高度
      */
     private float mHeight = 0.0F;
-    private SensorEventListener mSensorListener;
+    private SensorEventListener mSensorListener = new MySensorListener();
     private SensorManager mSensorManager;
-    private boolean isRegisted;
+    private boolean isRegisted = false;
 
     /**
      * 单例模式 构造函数私有化
@@ -94,7 +94,6 @@ public class StepCounter {
      */
     public boolean register() {
         mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
-        mSensorListener = new MySensorListener();
         Sensor stepSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
         Sensor pressureSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
         Sensor accSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -113,7 +112,7 @@ public class StepCounter {
      * @return
      */
     public boolean start() {
-        if (!isRegisted) throw new RuntimeException("开始之前请调用register()");
+//        if (!isRegisted) throw new RuntimeException("开始之前请调用register()");
         return reset();
     }
 
