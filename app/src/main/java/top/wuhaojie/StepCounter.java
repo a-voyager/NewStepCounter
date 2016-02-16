@@ -15,7 +15,7 @@ public class StepCounter {
     /**
      * 计步器对象
      */
-    private StepCounter mStepCounter = null;
+    private static StepCounter mStepCounter = null;
 
     /**
      * 上下文对象
@@ -63,7 +63,7 @@ public class StepCounter {
      *
      * @return StepCounter对象
      */
-    public synchronized StepCounter getInstance(Context context) {
+    public synchronized static StepCounter getInstance(Context context) {
         if (context == null) {
             throw new NullPointerException("Context参数不能为null");
         }
